@@ -1,0 +1,286 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAPP!</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+  #map { 
+    height: 98vh;
+    position: relative;
+    background-color: white;
+  }
+
+  .opaque {
+    opacity: 0.5;
+  }
+
+  .legend {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    background-color: white;
+    box-shadow: 0px 5px 7px 4px rgba(200,200,200,0.5);
+    height: 30vh;
+    width: 22vw;
+    z-index: 100;
+    padding: 2em;
+    border-radius: 1em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 1em 0.5em;
+    border: none;
+    text-align: left;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .all, .office, .classrooms, .facilities, .grounds, .comfort-rooms {
+    padding: 0.8em;
+  }
+
+  .all {
+    background-color: whitesmoke;
+  }
+
+  .office {
+    background-color: #f0752e;
+  }
+
+  .classrooms {
+    background-color: #3630e6;
+  }
+
+  .facilities {
+    background-color: #eb178c;
+  }
+
+  .grounds {
+    background-color: #489943;
+  }
+
+  .comfort-rooms {
+    background-color: gray;
+  }
+
+  .international {
+    background-color: #ebe017;
+  }
+
+  .pad {
+    padding: 1em; 
+  }
+
+  .dir-btn {
+    padding: 1em;
+    width: 100%;
+    background-color: rgb(59, 59, 244);
+    color: white;
+    text-align: center;
+    border-radius: 0.5em;
+    margin: 1.5em 0 0 0;
+  }
+
+  .label {
+    font-size: x-small;
+  }
+</style>
+<body>
+  <div id="map">
+    <!-- <div class="legend">
+      <h1 style="margin: 0 0 1em 0;">Categories</h1>
+      <table style="width: 100%; ">
+        <tbody style="width: 100%;">
+          <tr>
+            <td class="all"></td>
+            <td><button onclick="legendCallback('All')">All</button></td>
+            <td class="pad"></td>
+            <td class="facilities"></td>
+            <td><button onclick="legendCallback('Facilities')">Facilities</button></td>
+          </tr>
+          <tr>
+            <td class="office"></td>
+            <td><button onclick="legendCallback('Office')">Offices</button></td>
+            <td class="pad"></td>
+            <td class="comfort-rooms"></td>
+            <td><button onclick="legendCallback('Comfort Room')">Comfort Rooms</button></td>
+          </tr>
+          <tr>
+            <td class="classrooms"></td>
+            <td><button onclick="legendCallback('Classroom')">Classrooms</button></td>
+            <td class="pad"></td>
+            <td class="grounds"></td>
+            <td><button onclick="legendCallback('Grounds')">Grounds</button></td>
+          </tr>
+          <tr>
+            <td class="international"></td>
+            <td><button onclick="legendCallback('International')">International</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+  </div>
+</body>
+<script src="./index.js"></script>
+<script src="./routes.js"></script>
+<script src="./styles.js"></script>
+<script>
+
+  // let map;
+
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 19.4);
+  //       console.log(map);
+  //     });
+  //   }
+  // });
+  
+  let name = '';
+  let filter = 'All';
+  let map = L.map('map').setView([14.997878558707868,120.65467698215929], 19.4);
+  let route = undefined;
+  let endpoint = undefined;
+
+  const buildMap = () => {
+    var osm = L.tileLayer ('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 25,
+    }).addTo(map); 
+    const newLayer = L.geoJSON(geoData, {
+      style: (feature) => {
+        if (filter === 'All') {
+          switch (feature.properties.type) {
+            case "Office": return styles['Office']
+            case "Classroom": return styles['Classroom']
+            case "Facilities": return styles['Facilities']
+            case "Comfort Room": return styles['Comfort Room']
+            case "Grounds": return styles['Grounds']
+            case "Water": return styles['Water']
+            case "International": return styles['International']
+            default: return styles['Default']
+          }
+        } else {
+          if (feature.properties.type === filter) return styles[feature.properties.type];
+          return styles['Default'];
+        }
+      },
+      onEachFeature: (feature, layer) => {
+
+        if (feature && feature.properties.Name) {
+          const label = L.marker(layer.getBounds().getCenter(), {
+            icon: L.divIcon({
+              className: 'label',
+              html: feature.properties.Name,
+              iconSize: [50, 30],
+            })
+          }).addTo(map);
+
+          if (feature.properties.Description) {
+            layer.bindPopup(
+              `<div id="feature" data-feature="${feature.properties.Name}">` + 
+              `<img height="180" src="./images/${feature.properties.Name}.jpg" onerror="this.style.display='none'" alt=""/>` +
+              '<h1>'+ feature.properties.Name +'</h1>' + '<small>' + feature.properties.type + '</small>' + '<br />' + 
+              `<p>${feature.properties.Description}</p>` +
+              `<button class="dir-btn" type="button" onclick="getDirection()"> Get Direction </button>` + 
+              '</div>'
+            ,{
+              maxWidth: 500,
+              minWidth: 300,
+            });
+          } else {
+            layer.bindPopup(
+              `<div id="feature" data-feature="${feature.properties.Name}">` + 
+              `<img height="180" src="./images/${feature.properties.Name}.jpg" onerror="this.style.display='none'" alt=""/>` +
+              '<h1>'+ feature.properties.Name +'</h1>' + '<small>' + feature.properties.type + '</small>' + '<br />' + 
+              `<button class="dir-btn" type="button" onclick="getDirection()"> Get Direction </button>` + 
+              '</div>'
+            ,{
+              maxWidth: 500,
+              minWidth: 300,
+            });
+          }
+        }
+      },
+    }).addTo(map);
+  }
+
+  // const getDirection = () => {
+  //   if (route) route.remove();
+  //   if (endpoint) endpoint.remove();
+
+  //   const feature = $("#feature").data("feature");
+  //   const points = routes[feature];
+
+  //   route = new L.polyline(points, {
+  //     color: 'red',
+  //     weight: 7,
+  //     opacity: 0.8,
+  //     smoothFactor: 1,
+  //   }).addTo(map);
+
+  //   endpoint = new L.Marker(points[points.length - 1]).addTo(map);
+  //   map.closePopup();
+  // }
+
+  // const legendCallback = (name) => {
+  //   filter = name;
+  //   map.remove();
+  //   map = L.map('map').setView([15.15812280042229,120.59347291135504], 19);
+  //   buildMap();
+  // }
+
+  buildMap();
+
+  let marker, circle, lat, long;
+
+  const getPosition = (position) => {
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+    
+    if (marker) {
+      map.removeLayer(marker);
+    }
+
+    if (circle) {
+      map.removeLayer(circle);
+    }
+
+    marker = L.marker([lat, long]);
+    circle = L.circle([lat, long], { radius: 2 });
+
+    const featureGroup = L.featureGroup([circle]).addTo(map);
+
+    map.panTo([lat, long]);
+  }
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(getPosition, function(error){
+      console.log(error);
+    }, {
+      enableHighAccuracy: true,
+      maximumAge: 0,
+      timeout: 500,
+    });
+  }
+  
+</script>
+</html>
