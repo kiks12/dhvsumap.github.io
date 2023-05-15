@@ -24,7 +24,7 @@ const styles = {
     weight: 0.5,
   },
   'Grounds': {
-    fillColor: "#489943",
+    fillColor: "#dbdbdb",
     fillOpacity: 0.6,
     weight: 0,
     color: "#489943",
@@ -42,7 +42,7 @@ const styles = {
     color: "#8cd7ff",
   },
   'Default': {
-    fillColor: "#dbdbdb",
+    fillColor: "#a8a8a8",
     fillOpacity: 0.4,
     weight: 0.5,
     color: "#dbdbdb",
