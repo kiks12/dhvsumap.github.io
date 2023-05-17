@@ -217,8 +217,11 @@
 
     marker = L.marker([lat, long]);
     circle = L.circle([lat, long], { radius: 2 });
+    circle2 = L.circle([lat, long], { radius: 4 });
+    circle.setStyle({ "color": "white", "fillColor": "white", "weight": "5" });
 
-    const featureGroup = L.featureGroup([circle]).addTo(map);
+
+    const featureGroup = L.featureGroup([circle2, circle]).addTo(map);
 
     map.panTo([lat, long]);
   }
