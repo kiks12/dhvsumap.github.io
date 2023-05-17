@@ -223,15 +223,15 @@
     map.panTo([lat, long]);
   }
 
-  // if (navigator.geolocation) {
-  //   navigator.geolocation.watchPosition(getPosition, function(error){
-  //     console.log(error);
-  //   }, {
-  //     enableHighAccuracy: true,
-  //     maximumAge: 0,
-  //     timeout: 500,
-  //   });
-  // }
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(getPosition, function(error){
+      console.log(error);
+    }, {
+      enableHighAccuracy: true,
+      maximumAge: 0,
+      timeout: 500,
+    });
+  }
   
 </script>
 </html>
