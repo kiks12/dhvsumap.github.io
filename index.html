@@ -201,7 +201,7 @@
 
   buildMap();
 
-  let marker, circle, lat, long;
+  let marker, circle, circle2, lat, long;
 
   const getPosition = (position) => {
     lat = position.coords.latitude;
@@ -211,8 +211,9 @@
       map.removeLayer(marker);
     }
 
-    if (circle) {
+    if (circle && circle2) {
       map.removeLayer(circle);
+      map.removeLayer(circle2);
     }
 
     marker = L.marker([lat, long]);
