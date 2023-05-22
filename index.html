@@ -168,31 +168,6 @@
     }).addTo(map);
   }
 
-  // const getDirection = () => {
-  //   if (route) route.remove();
-  //   if (endpoint) endpoint.remove();
-
-  //   const feature = $("#feature").data("feature");
-  //   const points = routes[feature];
-
-  //   route = new L.polyline(points, {
-  //     color: 'red',
-  //     weight: 7,
-  //     opacity: 0.8,
-  //     smoothFactor: 1,
-  //   }).addTo(map);
-
-  //   endpoint = new L.Marker(points[points.length - 1]).addTo(map);
-  //   map.closePopup();
-  // }
-
-  // const legendCallback = (name) => {
-  //   filter = name;
-  //   map.remove();
-  //   map = L.map('map').setView([15.15812280042229,120.59347291135504], 19);
-  //   buildMap();
-  // }
-
   buildMap();
 
   let marker, circle, circle2, lat, long;
