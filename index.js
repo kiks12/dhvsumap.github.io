@@ -848,7 +848,9 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "Diosdado Macapagal Museum"
+      },
       "geometry": {
         "coordinates": [
           [
@@ -1180,12 +1182,12 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 9
+      "id": 23
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "secret 2"
+        "Name": "Social Work Building"
       },
       "geometry": {
         "coordinates": [
@@ -1214,12 +1216,12 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 10
+      "id": 24
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "Secret 2"
+        "Name": "Food Tech Building"
       },
       "geometry": {
         "coordinates": [
@@ -1264,7 +1266,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 11
+      "id": 25
     },
     {
       "type": "Feature",
@@ -1298,7 +1300,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 12
+      "id": 26
     },
     {
       "type": "Feature",
@@ -1336,7 +1338,9 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "CIT GSB Building"
+      },
       "geometry": {
         "coordinates": [
           [
@@ -1735,7 +1739,7 @@ const geoData = [{
     {
       "type": "Feature",
       "properties": {
-        "Name": "Laboratory High School Building"
+        "Name": "Academic Building 2"
       },
       "geometry": {
         "coordinates": [
@@ -1796,7 +1800,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 26
+      "id": 40
     },
     {
       "type": "Feature",
@@ -1830,7 +1834,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 27
+      "id": 41
     },
     {
       "type": "Feature",
@@ -2002,7 +2006,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 30
+      "id": 44
     },
     {
       "type": "Feature",
@@ -2198,7 +2202,9 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "School Parking"
+      },
       "geometry": {
         "coordinates": [
           [
@@ -2481,7 +2487,7 @@ const geoData = [{
     {
       "type": "Feature",
       "properties": {
-        "Name": "College of Industrial Technology Building Extension"
+        "Name": "CIT ITB Building"
       },
       "geometry": {
         "coordinates": [
@@ -2510,7 +2516,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 44
+      "id": 58
     },
     {
       "type": "Feature",
@@ -2648,7 +2654,9 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "Girls Trade Building"
+      },
       "geometry": {
         "coordinates": [
           [
@@ -2680,9 +2688,7 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {
-        "Name": "Computer Education Program"
-      },
+      "properties": {},
       "geometry": {
         "coordinates": [
           [
@@ -2718,12 +2724,12 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 49
+      "id": 63
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "Coop"
+        "Name": "DHVSU COOP"
       },
       "geometry": {
         "coordinates": [
@@ -2805,7 +2811,7 @@ const geoData = [{
     {
       "type": "Feature",
       "properties": {
-        "Name": "Coop"
+        "Name": "DHVSU COOP"
       },
       "geometry": {
         "coordinates": [
@@ -3004,7 +3010,9 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "CBS Building 3"
+      },
       "geometry": {
         "coordinates": [
           [
@@ -3071,7 +3079,7 @@ const geoData = [{
     {
       "type": "Feature",
       "properties": {
-        "Name": "Secret"
+        "Name": "Universitry Research Ext and Training"
       },
       "geometry": {
         "coordinates": [
@@ -3116,12 +3124,12 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 59
+      "id": 73
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "Secret"
+        "Name": "Function Hall"
       },
       "geometry": {
         "coordinates": [
@@ -3150,12 +3158,12 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 60
+      "id": 74
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "Secret"
+        "Name": "Bathroom"
       },
       "geometry": {
         "coordinates": [
@@ -3184,7 +3192,7 @@ const geoData = [{
         ],
         "type": "Polygon"
       },
-      "id": 61
+      "id": 75
     },
     {
       "type": "Feature",
@@ -3590,38 +3598,6 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              120.65717918463343,
-              14.998138604255061
-            ],
-            [
-              120.65717333420798,
-              14.998121884952539
-            ],
-            [
-              120.65723082107746,
-              14.99811434389477
-            ],
-            [
-              120.65723437999202,
-              14.99813409663902
-            ],
-            [
-              120.65717918463343,
-              14.998138604255061
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": 88
-    },
-    {
-      "type": "Feature",
       "properties": {
         "Name": "University Covered Court"
       },
@@ -3790,131 +3766,37 @@ const geoData = [{
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "Name": "College of Arts and Sciences"
+      },
       "geometry": {
         "coordinates": [
           [
             [
-              120.6568298673397,
-              14.99862791734813
+              120.6565198069718,
+              14.998756082984741
             ],
             [
-              120.6568215285892,
-              14.998488609773716
+              120.65648969043497,
+              14.998646185475792
             ],
             [
-              120.65698019374247,
-              14.998476549978363
+              120.65712883026197,
+              14.998536287911293
             ],
             [
-              120.65699431463895,
-              14.99861537362277
+              120.6571572736583,
+              14.998652650036973
             ],
             [
-              120.6568298673397,
-              14.99862791734813
+              120.6565198069718,
+              14.998756082984741
             ]
           ]
         ],
         "type": "Polygon"
       },
       "id": 93
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              120.65667027459568,
-              14.99863818940453
-            ],
-            [
-              120.65665432616481,
-              14.998529076025534
-            ],
-            [
-              120.65666780821914,
-              14.998526347077487
-            ],
-            [
-              120.65666752239855,
-              14.998506212044717
-            ],
-            [
-              120.6567965890946,
-              14.998489776526554
-            ],
-            [
-              120.65680885840487,
-              14.998617961813977
-            ],
-            [
-              120.65679897335099,
-              14.998622699613122
-            ],
-            [
-              120.65680400660557,
-              14.998649419927801
-            ],
-            [
-              120.65671555589427,
-              14.998659004652026
-            ],
-            [
-              120.65671084950549,
-              14.998632147727022
-            ],
-            [
-              120.65667027459568,
-              14.99863818940453
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": 94
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              120.65651566276102,
-              14.998667743510723
-            ],
-            [
-              120.65649926405433,
-              14.998554387035114
-            ],
-            [
-              120.6564603729891,
-              14.998559785114395
-            ],
-            [
-              120.65645478681813,
-              14.998531643297582
-            ],
-            [
-              120.65663128503826,
-              14.998499790634384
-            ],
-            [
-              120.65665748023122,
-              14.998644068338749
-            ],
-            [
-              120.65651566276102,
-              14.998667743510723
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": 95
     }
   ]
 }];
